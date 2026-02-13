@@ -29,6 +29,12 @@ class NotesViewModel: ObservableObject {
     func deleteNote(at offsets: IndexSet) {
         notes.remove(atOffsets: offsets)
     }
+    func updateNote(note: Note, title: String, content: String) {
+        if let index = notes.firstIndex(where: { $0.id == note.id }) {
+            notes[index].title = title
+            notes[index].content = content
+        }
+    }
  
     func toggleCompletion(note: Note) {
         if let index = notes.firstIndex(where: { $0.id == note.id }) {
